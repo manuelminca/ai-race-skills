@@ -9,12 +9,12 @@ A general-purpose calendar layer that helps agents interact with the user's cale
 
 ## Setup
 
-Requires a calendar CLI or API skill configured for your provider. Currently supported:
+This skill is a **layer on top of your calendar API**. It requires a calendar CLI or API skill to be installed. See the official documentation for your provider:
 
-- **gog** (Google Calendar): requires `gog` CLI installed and authenticated
-- **Microsoft Graph** (Outlook): requires `outlook-email` or equivalent skill configured
+- **Google Calendar (gog)**: See [clawhub.ai/steipete/gog](https://clawhub.ai/steipete/gog) for installation and authentication
+- **Microsoft Graph (Outlook)**: See the `outlook-email` skill for Graph API setup
 
-Required environment variables (for gog):
+Required environment variables (gog example):
 - `GOG_ACCOUNT`: default Google account
 - `GOG_KEYRING_PASSWORD`: keyring passphrase
 
@@ -22,6 +22,7 @@ Required environment variables (for gog):
 
 Before creating calendar events, the agent should know the user's preferences:
 
+- Whether the agent should **always ask for confirmation before creating events** (vs. creating autonomously)
 - Preferred event title format
 - Buffer time between events (e.g., 15 min travel)
 - Default event duration
