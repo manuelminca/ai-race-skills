@@ -1,6 +1,6 @@
 ---
 name: calendar-manager
-description: Manage Google Calendar events via gog CLI. Create events, list upcoming events, check for scheduling conflicts. Use when you need to check if a time slot is free or create a calendar event for an event research result.
+description: Manage Google Calendar events via gog CLI. Create events, list upcoming events, check for scheduling conflicts. Use when the user wants to add something to their calendar, check their availability, or manage calendar events. General-purpose calendar capability for any agent task.
 ---
 
 # Calendar Manager

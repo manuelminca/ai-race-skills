@@ -12,7 +12,7 @@ Orchestrates all event-research sub-skills to go from an event image/flyer/docum
 1. **event-parser** → Extract basic event info (name, date, venue, speakers)
 2. **event-researcher** → Research speakers, sponsors, thematic context
 3. **location-intel** → Venue geocoding, directions, nearby places
-4. **calendar-manager** → Check conflicts and create calendar events
+4. **calendar-manager** → Check conflicts and create calendar events (general-purpose skill)
 5. **event-documenter** → Generate the final structured report
 
 ## Workflow
