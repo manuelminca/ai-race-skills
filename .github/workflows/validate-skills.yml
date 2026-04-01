@@ -18,19 +18,5 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install clawhub and skill-creator
-        run: |
-          npm install -g clawhub
-          npm install -g openclaw
-          # skill-creator is under openclaw's skills dir - install via clawhub
-          clawhub install skill-creator --workdir /tmp/skill-creator-tmp 2>/dev/null || true
-          # Find package_skill.py
-          find /tmp/skill-creator-tmp -name "package_skill.py" 2>/dev/null | head -3
-          find ~/.npm-global -name "package_skill.py" 2>/dev/null | head -3
-          echo "NPM_PREFIX=$(npm config get prefix)" >> $GITHUB_ENV
-
       - name: Validate all skills
         run: ./setup/validate-all.sh
-        env:
-          NPM_PREFIX: ${{ env.NPM_PREFIX }}
-          CLAWHUB_PKG_PATH: /tmp/skill-creator-tmp

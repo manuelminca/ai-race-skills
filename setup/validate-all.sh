@@ -5,32 +5,18 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 
-# Find package_skill.py
-PKG_SCRIPT=""
-NPM_GLOBAL="${NPM_PREFIX:-$(npm root -g 2>/dev/null)}"
+# Use the bundled package_skill.py in setup/
+PKG_SCRIPT="$SCRIPT_DIR/package_skill.py"
 
-for dir in \
-    "$NPM_GLOBAL/openclaw/skills/skill-creator/scripts/package_skill.py" \
-    "$HOME/.npm-global/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py" \
-    "${CLAWHUB_PKG_PATH:-/tmp/skill-creator-tmp}/skills/skill-creator/scripts/package_skill.py" \
-    "$(find /tmp -name 'package_skill.py' 2>/dev/null | head -1)"; do
-    if [ -f "$dir" ]; then
-        PKG_SCRIPT="$dir"
-        break
-    fi
-done
-
-if [ -z "$PKG_SCRIPT" ]; then
-    echo "❌ package_skill.py not found."
-    echo "   Searched: $NPM_GLOBAL, $HOME/.npm-global, ${CLAWHUB_PKG_PATH:-/tmp/skill-creator-tmp}"
-    echo "   Run: npm install -g clawhub && clawhub install skill-creator --workdir /tmp/skill-creator-tmp"
+if [ ! -f "$PKG_SCRIPT" ]; then
+    echo "❌ package_skill.py not found in setup/"
     exit 1
 fi
 
 SKILLS_DIR="$REPO_ROOT/skills"
 FAILED=0
 
-echo "🔍 Validating skills in $SKILLS_DIR (using $PKG_SCRIPT)"
+echo "🔍 Validating skills in $SKILLS_DIR"
 
 for skill in "$SKILLS_DIR"/*/; do
     skill_name="$(basename "$skill")"
