@@ -23,6 +23,14 @@ jobs:
           npm install -g openclaw
           echo "NPM_PREFIX=$(npm config get prefix)" >> $GITHUB_ENV
 
+      - name: Debug npm paths
+        run: |
+          echo "NPM_PREFIX=$NPM_PREFIX"
+          echo "npm root=$(npm root)"
+          ls $(npm root) 2>/dev/null || echo "npm root dir not found"
+          ls $(npm root)/openclaw/ 2>/dev/null | head -20
+          find /usr/local/lib/node_modules -name "package_skill.py" 2>/dev/null | head -5
+
       - name: Validate all skills
         run: ./setup/validate-all.sh
         env:
