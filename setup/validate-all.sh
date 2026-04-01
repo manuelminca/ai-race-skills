@@ -5,13 +5,15 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 
-# Find package_skill.py using NPM_PREFIX env var (set by CI) or npm root
-NPM_GLOBAL="${NPM_PREFIX:-$(npm root -g 2>/dev/null)}"
+# Find package_skill.py
 PKG_SCRIPT=""
+NPM_GLOBAL="${NPM_PREFIX:-$(npm root -g 2>/dev/null)}"
+
 for dir in \
     "$NPM_GLOBAL/openclaw/skills/skill-creator/scripts/package_skill.py" \
     "$HOME/.npm-global/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py" \
-    "/usr/local/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py"; do
+    "${CLAWHUB_PKG_PATH:-/tmp/skill-creator-tmp}/skills/skill-creator/scripts/package_skill.py" \
+    "$(find /tmp -name 'package_skill.py' 2>/dev/null | head -1)"; do
     if [ -f "$dir" ]; then
         PKG_SCRIPT="$dir"
         break
@@ -20,9 +22,8 @@ done
 
 if [ -z "$PKG_SCRIPT" ]; then
     echo "❌ package_skill.py not found."
-    echo "   NPM_PREFIX=$NPM_PREFIX"
-    echo "   npm root -g=$(npm root -g)"
-    echo "   Run: npm install -g openclaw"
+    echo "   Searched: $NPM_GLOBAL, $HOME/.npm-global, ${CLAWHUB_PKG_PATH:-/tmp/skill-creator-tmp}"
+    echo "   Run: npm install -g clawhub && clawhub install skill-creator --workdir /tmp/skill-creator-tmp"
     exit 1
 fi
 
