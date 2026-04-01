@@ -58,7 +58,7 @@ If the input is an image, document, or URL:
 **Venue:** ...
 **Speakers:** ...
 
-### Resumen
+### Summary
 ...
 
 ### Speakers
@@ -67,7 +67,7 @@ If the input is an image, document, or URL:
 ### Location
 ...
 
-### Logística
+### Logistics
 ...
 
 ### Calendar
