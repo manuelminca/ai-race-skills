@@ -12,7 +12,7 @@ A general-purpose calendar layer that helps agents interact with the user's cale
 This skill is a **layer on top of your calendar API**. It requires a calendar CLI or API skill to be installed. See the official documentation for your provider:
 
 - **Google Calendar (gog)**: See [clawhub.ai/steipete/gog](https://clawhub.ai/steipete/gog) for installation and authentication
-- **Microsoft Graph (Outlook)**: See the `outlook-email` skill for Graph API setup
+- **Outlook Calendar**: Use Microsoft Graph API with OAuth2 device code flow (similar to outlook-email skill)
 
 Required environment variables (gog example):
 - `GOG_ACCOUNT`: default Google account
