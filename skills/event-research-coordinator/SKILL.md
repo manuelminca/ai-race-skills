@@ -7,13 +7,26 @@ description: Orchestrates the full event research workflow. Use when user wants 
 
 Orchestrates all event-research sub-skills to go from an event image/flyer/document to a complete event report with research, logistics, and calendar scheduling.
 
-## Sub-skills (called in order)
+## Workflow
 
-1. **event-parser** → Extract basic event info (name, date, venue, speakers)
-2. **event-researcher** → Research speakers, sponsors, thematic context
-3. **location-intel** → Venue geocoding, directions, nearby places
-4. **calendar-manager** → Check conflicts and create calendar events (general-purpose skill)
-5. **event-documenter** → Generate the final structured report
+**Step 1 — Parse input**
+If input is an image/document/URL → use **event-parser** to extract basic info.
+If input is already text → skip to Step 2.
+
+**Step 2 — Research**
+Use **event-researcher** to investigate speakers, sponsors, organization, theme.
+
+**Step 3 — Location intelligence**
+Use **location-intel** to get venue coordinates, directions, nearby places.
+
+**Step 4 — Generate report**
+Use **event-documenter** to compile everything into a structured report.
+
+**Step 5 — Deliver to client**
+Share the report with the client. Ask if they want to attend.
+
+**Step 6 — Calendar (only if client approves)**
+If the client wants to attend → use **calendar-manager** to check conflicts and create the event.
 
 ## Workflow
 
