@@ -80,7 +80,7 @@ curl -s "https://maps.googleapis.com/maps/api/place/details/json?place_id=[id]&f
 - User asks "where is X?", "how do I get there?", "what's near Y?"
 - User wants to find a specific type of place (café, coworking, parking)
 - User needs directions or travel options
-- Generating a logistics section for an event report
+- Any situation where location, directions, or nearby places are relevant
 
 ## API enablement
 
