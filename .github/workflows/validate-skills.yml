@@ -18,8 +18,12 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install OpenClaw
-        run: npm install -g openclaw
+      - name: Install OpenClaw and get prefix
+        run: |
+          npm install -g openclaw
+          echo "NPM_PREFIX=$(npm config get prefix)" >> $GITHUB_ENV
 
       - name: Validate all skills
         run: ./setup/validate-all.sh
+        env:
+          NPM_PREFIX: ${{ env.NPM_PREFIX }}
