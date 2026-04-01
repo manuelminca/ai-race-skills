@@ -4,10 +4,23 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
-PKG_SCRIPT="${OPENCLAW_PKG_SCRIPT:-$HOME/.npm-global/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py}"
 
-if [ ! -f "$PKG_SCRIPT" ]; then
-    echo "❌ package_skill.py not found. Install with: npm install -g openclaw"
+# Find package_skill.py — check multiple possible locations
+PKG_SCRIPT=""
+for dir in \
+    "$HOME/.npm-global/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py" \
+    "$(npm root -g 2>/dev/null)/openclaw/skills/skill-creator/scripts/package_skill.py" \
+    "/usr/local/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py" \
+    "/opt/hostedtoolcache/Python/3.11.15/x64/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py"; do
+    if [ -f "$dir" ]; then
+        PKG_SCRIPT="$dir"
+        break
+    fi
+done
+
+if [ -z "$PKG_SCRIPT" ]; then
+    echo "❌ package_skill.py not found."
+    echo "   Run: npm install -g openclaw"
     exit 1
 fi
 
