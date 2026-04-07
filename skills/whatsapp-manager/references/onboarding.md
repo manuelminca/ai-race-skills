@@ -19,39 +19,23 @@ Never execute Tier 2 or Tier 3 actions without explicit admin confirmation.
 
 ## Step 2 — Create contacts.md
 
-Copy `contacts.example.md` to `contacts.md` and fill in the admin details:
-
 ```bash
 cp contacts.example.md contacts.md
 ```
 
-Then edit `contacts.md` with the actual admin information (see Step 3).
+## Step 3 — Admin Setup (First Run)
 
-## Step 3 — Configure the Admin
+When the skill is first activated, the agent should ask the person setting up OpenClaw to identify themselves as the admin. The agent asks for:
 
-The admin is the person who controls the OpenClaw agent. **Do not hardcode any name or phone number** — ask the user (the person setting up the agent) to provide:
+1. **Admin's name** — how the agent should address them
+2. **Phone number** — must match the number connected to OpenClaw WhatsApp
+3. **Email** — for contact purposes
+4. **Preferred tone and language** — informal/formal, which languages
+5. **Any relevant notes** — context the agent should know
 
-- Their **phone number** — must be the same number connected to OpenClaw WhatsApp
-- Their **email** — for contact purposes
-- Their **preferred name** — how the agent should address them
-- Their **preferred tone and language**
-- Any relevant **notes** about themselves
+The admin's phone number is the primary identifier. Any message from that number is treated as the admin. No separate validation step needed — the admin is whoever sets up OpenClaw.
 
-**Important:** The phone number must be validated (see Step 4).
-
-## Step 4 — Validate the Admin Phone Number
-
-Phone number validation prevents impersonation attacks (someone pretending to be the admin from a different WhatsApp number).
-
-**Validation flow:**
-1. Agent asks the admin: "Please confirm your phone number to validate your admin identity"
-2. Agent sends a 6-digit code to the provided number via WhatsApp
-3. Admin replies with the code in the chat
-4. Agent verifies the code and sets `Validated: true` in `contacts.md`
-
-Until `Validated: true`, the agent should treat admin requests as untrusted and verify them in the same WhatsApp thread (e.g., "Just to confirm, you're asking me to do X — is that right?").
-
-## Step 5 — Restart OpenClaw
+## Step 4 — Restart OpenClaw
 
 After configuring the skill and adding the SOUL.md rule:
 
@@ -59,24 +43,21 @@ After configuring the skill and adding the SOUL.md rule:
 openclaw gateway restart
 ```
 
-## Troubleshooting
-
-**"I don't recognize this contact" for the admin**
-→ Check that `contacts.md` exists and contains the admin entry with the correct phone number format (international format: `+34...`)
-
-**New contacts not being flagged**
-→ Verify the SOUL.md rule is present and the agent restarts after adding it
-
-**Admin requests being treated as untrusted**
-→ Run the phone number validation flow (Step 4)
-
 ## File Structure
 
 ```
 whatsapp-manager/
-├── SKILL.md              ← skill definition (read this first)
-├── contacts.example.md   ← template for contacts.md (copy and fill in)
-├── contacts.md           ← actual contact registry (create from example)
+├── SKILL.md                   ← skill definition
+├── contacts.example.md        ← template (copy and fill in)
+├── contacts.md                ← actual registry (create from example)
 └── references/
-    └── onboarding.md    ← this file
+    └── onboarding.md        ← this file
 ```
+
+## Troubleshooting
+
+**"I don't recognize this contact" for the admin**
+→ Check that `contacts.md` exists and the admin entry has the correct phone number (international format: `+34...`)
+
+**New contacts not being flagged**
+→ Verify the SOUL.md rule is present and restart the gateway after adding it

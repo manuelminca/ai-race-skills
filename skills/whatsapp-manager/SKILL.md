@@ -48,9 +48,7 @@ Each contact entry contains:
 - **Tone:** formal | informal | technical | humorous
 - **Permissions:** [whitelist of allowed actions]
 - **Notes:** Context, preferences, sensitivities.
-- **Validated:** true | false
 - **First seen:** 2025-01-15
-- **Last interaction:** 2026-04-07
 ```
 
 ## Contact Types
@@ -110,23 +108,24 @@ Anything not explicitly in the whitelist is denied. Examples:
 
 Admin contacts can request anything. Execute without restriction, but confirm potentially irreversible actions (sending messages, calendar changes) before executing.
 
-## Admin Validation
+## Admin Setup (First Run)
 
-The admin's phone number must be validated before the admin identity is trusted. Unvalidated admin requests should be verified through a second channel or confirmation in the same WhatsApp thread.
+When the skill is first configured, the agent should ask the person setting up the agent to identify themselves as the admin:
 
-**Validation flow:**
-1. Agent asks admin for their phone number
-2. Agent sends a 6-digit code via WhatsApp to that number
-3. Admin confirms the code in the chat
-4. Agent sets `Validated: true` on the admin entry
+1. **Ask for the admin's name** — how the agent should address them
+2. **Ask for their phone number** — must be the same number connected to OpenClaw WhatsApp
+3. **Ask for their email** — for contact purposes
+4. **Ask for preferred tone and language** — informal/formal, languages they speak
+5. **Ask for any relevant notes** — context the agent should know
+
+The admin's phone number is the primary identifier. From that moment, any message from that number is treated as the admin.
 
 ## Updating contacts.md
 
 When a contact's permissions change:
 
 1. Edit the contact entry in `contacts.md`
-2. Update `Last interaction` date
-3. Update any changed fields
+2. Update any changed fields
 
 When a new contact is added:
 1. Create a new entry with all known fields
@@ -158,5 +157,3 @@ Use `Notes` to store anything the agent should know about this person — commun
 - Never confirm the admin's schedule to unknown contacts
 - All contact data stays local — never share `contacts.md` contents
 - Phone numbers are considered personal data — handle accordingly
-- Phone number validation is required before trusting an admin identity
-- Requests from unvalidated admin accounts must be verified in the same WhatsApp thread
