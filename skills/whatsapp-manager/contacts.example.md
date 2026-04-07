@@ -15,8 +15,8 @@ The agent will use `contacts.md` as the source of truth. On first run, the agent
 - **Relationship:** Administrator
 - **Type:** admin
 - **Tags:** admin
-- **Language:** es, en
-- **Timezone:** Europe/Madrid
+- **Language:** en, es
+- **Timezone:** Europe/Madrid (CET)
 - **Tone:** informal
 - **Permissions:** ALL — can request any action without confirmation
 - **Notes:** [Fill in personal notes about the admin]
@@ -34,8 +34,8 @@ The agent will use `contacts.md` as the source of truth. On first run, the agent
 - **Relationship:** Colleague
 - **Type:** known
 - **Tags:** work, colleague
-- **Language:** es, en
-- **Timezone:** Europe/Madrid
+- **Language:** en, es
+- **Timezone:** Europe/Madrid (CET)
 - **Tone:** informal
 - **Permissions:**
   - Request web searches
