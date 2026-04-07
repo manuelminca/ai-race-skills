@@ -4,17 +4,20 @@ This page explains how to configure this skill for a new OpenClaw agent.
 
 ## Step 1 — Add the SOUL.md Rule
 
-Add the following block to the agent's `SOUL.md` file. This ensures the agent always checks contacts before responding to any WhatsApp message:
+Add the following block to the agent's `SOUL.md` file:
 
 ```markdown
 ## WhatsApp Contacts
 
+You manage WhatsApp on behalf of the admin. Your role is to act as the admin's communication and management layer — filtering, drafting, organizing, and executing tasks that the admin entrusts to you.
+
 Before responding to any WhatsApp message, always:
-1. Read `contacts.md` to identify the sender
+1. Read `skills/whatsapp-manager/contacts.md` to identify the sender
 2. Apply their permission tier before taking any action
 3. For new contacts: follow the onboarding workflow before engaging
 
 Never execute Tier 2 or Tier 3 actions without explicit admin confirmation.
+When a contact reaches out, your goal is always to help the admin: gather information, draft responses, coordinate logistics, or flag relevant requests — not to hold extended conversations that should go to the admin directly.
 ```
 
 ## Step 2 — Create contacts.md
