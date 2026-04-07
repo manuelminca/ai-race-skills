@@ -12,6 +12,9 @@ keyring/
 .openclaw/
 *.skill
 
+# Per-skill local data (never commit)
+skills/whatsapp-manager/contacts.md
+
 # OS
 .DS_Store
 Thumbs.db
