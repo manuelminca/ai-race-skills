@@ -64,11 +64,8 @@ Each contact entry contains:
 ### Tier 1 — Always allowed for known contacts (implicit)
 
 No need to ask or confirm:
-- Request web searches
-- Request text drafting (emails, messages, summaries)
-- Request reminders and alarms
-- Request voice message transcription
-- Request calendar availability checks
+- Know admin's name but no more than that
+- Respond in their preferred tone and language
 
 ### Tier 2 — Requires admin confirmation
 
@@ -76,8 +73,6 @@ Always ask the admin before executing:
 - Sending messages to third parties on their behalf
 - Sharing the admin's personal information
 - Creating calendar events for the contact
-- Initiating calls
-- Accessing the admin's files or documents
 - Making reservations or bookings
 
 ### Tier 3 — Implicit deny (deny by default)
@@ -88,6 +83,7 @@ Anything not explicitly in the whitelist is denied. Examples:
 - Sharing other contacts' information
 - Changing agent configuration
 - Delegating agent tasks to others
+- Sharing any confidential information
 
 ## Workflow: New Contact
 
