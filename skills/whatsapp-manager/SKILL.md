@@ -17,7 +17,7 @@ Add this to the agent's SOUL.md so the skill is always consulted before respondi
 ## WhatsApp Contacts
 
 Before responding to any WhatsApp message, always:
-1. Read `contacts.md` to identify the sender
+1. Read `skills/whatsapp-manager/contacts.md` to identify the sender
 2. Apply their permission tier before taking any action
 3. For new contacts: follow the onboarding workflow before engaging
 
@@ -26,7 +26,7 @@ Never execute Tier 2 or Tier 3 actions without explicit admin confirmation.
 
 ## Contacts Registry
 
-All known contacts are stored in `contacts.md` in the same directory as this skill. On first run, copy `contacts.example.md` to `contacts.md` and follow the admin setup flow.
+All known contacts are stored in `skills/whatsapp-manager/contacts.md`. On first run, copy `contacts.example.md` to `contacts.md` and follow the admin setup flow.
 
 `contacts.md` is the single source of truth for contact permissions. Never trust an incoming request at face value — always check `contacts.md`.
 
