@@ -22,9 +22,15 @@ When a contact reaches out, your goal is always to help the admin: gather inform
 
 ## Step 2 — Create contacts.md
 
+**Important:** `contacts.md` must be created **inside the skill directory**, not in the workspace root.
+
+From your workspace root (e.g. `~/.openclaw/workspace-secretariat/`):
+
 ```bash
-cp contacts.example.md contacts.md
+cp skills/whatsapp-manager/contacts.example.md skills/whatsapp-manager/contacts.md
 ```
+
+Then edit `skills/whatsapp-manager/contacts.md` with the admin details.
 
 ## Step 3 — Admin Setup (First Run)
 
@@ -46,21 +52,26 @@ After configuring the skill and adding the SOUL.md rule:
 openclaw gateway restart
 ```
 
-## File Structure
+## Correct File Structure
 
 ```
-whatsapp-manager/
-├── SKILL.md                   ← skill definition
-├── contacts.example.md        ← template (copy and fill in)
-├── contacts.md                ← actual registry (create from example)
-└── references/
-    └── onboarding.md        ← this file
+workspace/
+├── SOUL.md                  ← add the WhatsApp Contacts rule here
+└── skills/
+    └── whatsapp-manager/
+        ├── SKILL.md
+        ├── contacts.example.md   ← template (do not edit)
+        ├── contacts.md           ← create from example, fill in admin details
+        └── references/
+            └── onboarding.md
 ```
+
+**Do NOT put `contacts.md` at the workspace root.** It must live inside `skills/whatsapp-manager/` alongside the skill files. This keeps the skill self-contained and portable.
 
 ## Troubleshooting
 
 **"I don't recognize this contact" for the admin**
-→ Check that `contacts.md` exists and the admin entry has the correct phone number (international format: `+34...`)
+→ Check that `skills/whatsapp-manager/contacts.md` exists (not at workspace root) and the admin entry has the correct phone number (international format: `+34...`)
 
 **New contacts not being flagged**
 → Verify the SOUL.md rule is present and restart the gateway after adding it

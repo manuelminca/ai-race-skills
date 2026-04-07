@@ -146,7 +146,9 @@ Default tone if not specified: `informal`.
 
 ## Language preferences
 
-If `Language` includes the contact's written language, respond in that language. Default: match the language the contact used.
+The **document structure** (contacts.md, SKILL.md, all skill files) is always in English.
+
+The **communication language** with each contact is set per contact via the `Language` field. If `Language` includes the contact's written language, respond in that language. Default: match the language the contact used.
 
 ## Notes field
 
