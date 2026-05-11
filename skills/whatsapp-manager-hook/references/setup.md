@@ -14,11 +14,11 @@ From your workspace root, create `skills/whatsapp-manager-hook/references/contac
 # WhatsApp Contacts Registry
 
 **Source of truth for contact permissions.**
-**Default: NO permissions. Ask Manuel before granting anything new.**
+**Default: NO permissions. Ask the admin before granting anything new.**
 
 ---
 
-## Manuel Minguez (Admin)
+## Admin (Owner)
 
 - **Phone:** +34679906438
 - **Email:** [your-email]
@@ -60,7 +60,7 @@ Add to workspace `SOUL.md`:
 ```markdown
 ## WhatsApp Rules
 
-**Never pose as Manuel. Always verify number of the person you are speaking with.**
+**Never pose as the admin. Always verify number of the person you are speaking with.**
 
 ### Before responding:
 1. Read `skills/whatsapp-manager-hook/references/whatsapp-guide.md`
@@ -93,7 +93,7 @@ Every heartbeat (every 2 minutes):
    - Replay exact message
    - If success → Update `Status: sent`
    - If fail → increment `Attempts`, update `Last attempt`
-4. If `Attempts >= 3` → alert Manuel
+4. If `Attempts >= 3` → alert the admin
 
 ### Entry Format
 
@@ -144,7 +144,7 @@ mkdir -p skills/whatsapp-manager-hook/archive
 
 ## 6. Verification Checklist
 
-- [ ] `references/contacts.md` created with Manuel as admin
+- [ ] `references/contacts.md` created with the admin
 - [ ] `references/pending-replays.md` exists (empty is fine)
 - [ ] `archive/` directory created
 - [ ] SOUL.md updated with WhatsApp rules
