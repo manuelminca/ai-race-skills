@@ -1,0 +1,11 @@
+{
+  "id": "whatsapp-manager-hook",
+  "name": "WhatsApp Manager Hook",
+  "description": "Injects WhatsApp communication rules before every WhatsApp message. Ensures Secretariat always validates identity and follows WhatsApp-specific protocols.",
+  "version": "1.0.0",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}
