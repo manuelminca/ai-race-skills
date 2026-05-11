@@ -18,19 +18,19 @@ From your workspace root, create `skills/whatsapp-manager-hook/references/contac
 
 ---
 
-## Admin (Owner)
+## [Your Name]
 
-- **Phone:** +34679906438
+- **Phone:** +XXXXXXXXXXX
 - **Email:** [your-email]
 - **Position:** Owner / Administrator
 - **Type:** admin
 - **Tags:** [admin, owner]
-- **Language:** es, en
-- **Timezone:** Europe/Madrid
+- **Language:** en
+- **Timezone:** [your-timezone]
 - **Tone:** informal
 - **Permissions:**
   - ALL — administrator, no confirmation needed for any action
-- **Notes:** Boss. Can override any decision.
+- **Notes:** The admin. Can override any decision.
 - **First seen:** YYYY-MM-DD
 
 ## [Contact Name]
@@ -41,7 +41,7 @@ From your workspace root, create `skills/whatsapp-manager-hook/references/contac
 - **Relationship:** colleague|friend|family|unknown
 - **Type:** known|unknown
 - **Tags:** [relevant tags]
-- **Language:** en|es|...
+- **Language:** en
 - **Timezone:** [timezone]
 - **Tone:** informal|formal
 - **Permissions:**
@@ -165,6 +165,7 @@ whatsapp-manager-hook/
     ├── contacts.md            # Contact database (create from contacts.example.md)
     ├── contacts.example.md    # Template for contacts
     ├── pending-replays.md     # Cross-session pending messages
+    ├── permissions.md         # Permission reference
     └── whatsapp-guide.md      # Quick reference for WhatsApp interactions
 ```
 
@@ -192,4 +193,4 @@ whatsapp-manager-hook/
 
 ---
 
-*Last updated: 2026-05-04*
+*Last updated: 2026-05-11*

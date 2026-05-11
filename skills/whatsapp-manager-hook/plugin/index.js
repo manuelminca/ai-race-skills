@@ -102,7 +102,7 @@ export default definePluginEntry({
     });
 
     // Hook 2: CRITICAL — Validate outgoing message before sending
-    // Blocks messages to unknown recipients, confirms admin messages
+    // Blocks messages to unknown recipients, allows admin messages
     api.registerHook('agent', 'message_sending', { name: 'whatsappOutboundValidation' }, async (params) => {
       const { target, content, inboundMeta } = params || {};
       
@@ -126,27 +126,25 @@ export default definePluginEntry({
         recipientPhone?.includes(phone.replace(/\D/g, ''))
       );
 
-      // If admin (Manuel) — always allow
-      if (recipientPhone?.replace(/\D/g, '') === '34679906438') {
-        console.log('[whatsapp-manager-hook] Admin message — ALLOWED');
-        return;
-      }
-
-      // If unknown contact — BLOCK
+      // If not in contacts — BLOCK
       if (!contactEntry) {
-        console.warn('[whatsapp-manager-hook] UNKNOWN recipient — BLOCKED');
+        console.warn('[whatsapp-manager-hook] Unknown recipient — BLOCKED');
         console.warn('[whatsapp-manager-hook] Message would go to:', target);
         console.warn('[whatsapp-manager-hook] Content preview:', content?.substring(0, 100));
         
         return {
           cancel: true,
-          reason: 'OUTBOUND_WHATSAPP_BLOCKED: Unknown recipient. This message has been blocked and flagged for Manuel review.'
+          reason: 'OUTBOUND_WHATSAPP_BLOCKED: Unknown recipient. This message has been blocked and flagged for the admin review.'
         };
       }
 
-      // For known contacts — log but allow
+      // Found contact — allow (check type for logging)
       const [phone, contact] = contactEntry;
-      console.log('[whatsapp-manager-hook] Known contact:', contact.name, '- Message ALLOWED');
+      if (contact.type === 'admin') {
+        console.log('[whatsapp-manager-hook] Admin message — ALLOWED');
+      } else {
+        console.log('[whatsapp-manager-hook] Known contact:', contact.name, '- Message ALLOWED');
+      }
       
       return { cancel: false };
     });

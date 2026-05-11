@@ -4,20 +4,20 @@ Complete list of available permissions.
 
 | Permission | Description |
 |------------|-------------|
-| `calendar.read_availability` | Check if Manuel has free time in calendar |
+| `calendar.read_availability` | Check if the admin has free time in calendar |
 | `calendar.read_events` | Read full event details from calendar |
-| `calendar.create_event` | Create events on Manuel's calendar |
+| `calendar.create_event` | Create events on the admin's calendar |
 | `calendar.modify_event` | Modify existing calendar events |
 | `calendar.delete_event` | Delete calendar events |
-| `contacts.read` | Read Manuel's contacts |
+| `contacts.read` | Read the admin's contacts |
 | `contacts.modify` | Add or modify contacts |
 | `gmail.read` | Read emails (NEVER send without gmail.send) |
-| `gmail.send` | Send emails on Manuel's behalf |
-| `message.forward_to_manuel` | Forward messages to Manuel for review |
-| `message.send_direct` | Send WhatsApp messages to Manuel on contact's behalf |
+| `gmail.send` | Send emails on the admin's behalf |
+| `message.forward_to_admin` | Forward messages to the admin for review |
+| `message.send_direct` | Send WhatsApp messages to the admin on contact's behalf |
 | `web.search` | Perform web searches |
 | `ai.request` | Ask AI to generate content (drafts, summaries, etc.) |
-| `reminder.create` | Create reminders for Manuel |
+| `reminder.create` | Create reminders for the admin |
 
 ---
 
@@ -25,7 +25,7 @@ Complete list of available permissions.
 
 | Contact Type | Default Permissions |
 |--------------|-------------------|
-| `admin` (Manuel) | ALL permissions — no confirmation needed |
+| `admin` | ALL permissions — no confirmation needed |
 | `known` | ZERO permissions — nothing allowed, everything requires explicit admin approval |
 | `unknown` | ZERO permissions — everything requires approval |
 
@@ -33,7 +33,7 @@ Complete list of available permissions.
 
 ## How to Grant Permissions
 
-When Manuel approves a permission via WhatsApp:
+When the admin approves a permission via WhatsApp:
 
 1. Add the permission to the contact's entry in `references/contacts.md`
 2. Optionally add context/limitations in the permission line
